@@ -1,0 +1,10 @@
+:root {
+  --HeartRate: 63;
+  --viewscale: 1.04;
+  --specialborder: 3px solid skyblue;
+  --BorderColor: skyblue;
+}
+body {
+  padding: 0;
+  background: rgb(46, 49, 51);
+}
