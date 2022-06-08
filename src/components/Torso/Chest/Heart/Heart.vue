@@ -54,21 +54,21 @@ export default {
     padding: 10% ;
     border: 3px solid skyblue;
     border-radius: 5px; 
-      
+    transition: all .3s;
 }
 .expandedHeart{
   border: 3px solid white;
   transition: all .3s;
 }
 .expandedHeart .Heart{
-    font: bolder;
     position: absolute;
-    top:10%;
-    left: 50%;
+    top:0%;
+    left: 49%;
     width: 1%;
-    padding: 40% ;
+    padding: 76% 49% ;
     border: 3px solid skyblue;
     border-radius: 5px; 
+    animation: heartbe .9s ease-in-out 0s infinite reverse;
       
 }
 
@@ -84,6 +84,20 @@ export default {
   }
  100% {
     transform: translate(-50%,0) scale(1) ;
+  }
+}
+@keyframes heartbe {
+  0% {
+    box-shadow: 0 0 3px 5px skyblue;
+  }
+  20% {
+    tbox-shadow: 0 0 0 0 skyblue;
+  }
+  35% {
+    box-shadow: 0 0 3px 5px skyblue;
+  }
+ 100% {
+    box-shadow: 0 0 3px 5px skyblue;
   }
 }
 </style>
