@@ -65,7 +65,6 @@ background-color: rgb(46, 49, 51);
   transform: translate(-50% ,0) scale(1.02);
 }
 .Torsocomp .torso .torsocontent{
-  border: solid 1px green;
   position: absolute;
   top:0;
   padding: 62% 50%  ;
@@ -74,7 +73,6 @@ background-color: rgb(46, 49, 51);
   z-index: 10;
 }
 .Torsocomp .expandedtorso .torsocontent{
-  border: solid 1px blue;
   position: absolute;
   height: 20%;
   top:0;

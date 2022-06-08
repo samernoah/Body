@@ -35,7 +35,7 @@ export default {
   mounted(){
     this.$store.state.Components.Heart.component=this.$el.firstChild;
     this.$store.state.Components.Heart.expanded=false;
-    this.$refs.heart.style.setProperty('animation' , `heartb ${60/this.HeartRate}s ease-in-out 0s infinite reverse`);
+    // this.$refs.heart.style.setProperty('animation' , `heartb ${60/this.HeartRate}s ease-in-out 0s infinite reverse`);
   }
 
 }
@@ -43,7 +43,6 @@ export default {
 
 <style>
 .HeartComp{
-  border: 3px solid yellow;
   transition: all .3s;
 }
 .HeartComp .Heart{
@@ -55,9 +54,9 @@ export default {
     border: 3px solid skyblue;
     border-radius: 5px; 
     transition: all .3s;
+    animation: heartb .9s ease-in-out 0s infinite reverse;
 }
 .expandedHeart{
-  border: 3px solid white;
   transition: all .3s;
 }
 .expandedHeart .Heart{
@@ -69,6 +68,7 @@ export default {
     border: 3px solid skyblue;
     border-radius: 5px; 
     animation: heartbe .9s ease-in-out 0s infinite reverse;
+    transition: all .3s;
       
 }
 
@@ -89,15 +89,19 @@ export default {
 @keyframes heartbe {
   0% {
     box-shadow: 0 0 3px 5px skyblue;
+    transform: translate(-49%,0);
   }
   20% {
-    tbox-shadow: 0 0 0 0 skyblue;
+    box-shadow: 0 0 0 0 skyblue;
+    transform: translate(-49%,0);
   }
   35% {
     box-shadow: 0 0 3px 5px skyblue;
+    transform: translate(-49%,0);
   }
  100% {
     box-shadow: 0 0 3px 5px skyblue;
+    transform: translate(-49%,0);
   }
 }
 </style>
