@@ -1,7 +1,7 @@
 <template>
   <div class="HeartComp"
   :class="{expandedHeart:ExpandedHeart , HeartComp:!ExpandedHeart}">
-      <div class="Heart" ref="heart" @click.self="expand"></div>
+      <div class="Heart" ref="heart" @click.self="expand" @mouseover="MouseOverHeart"></div>
         <RightV />
       </div>
 </template>
@@ -29,6 +29,9 @@ export default {
             this.$store.commit('ChangeExpandingState',['true','Heart']);
             this.$store.commit('ManegingTheComponentsArray',['Add','Heart']);
         }
+    },
+    MouseOverHeart(){
+      if(this.ComponentsArraylength===1){console.log('hello');}
     }
   },
 
@@ -54,7 +57,7 @@ export default {
     border: 3px solid skyblue;
     border-radius: 5px; 
     transition: all .3s;
-    animation: heartb .9s ease-in-out 0s infinite reverse;
+    animation: heartb 0.9s ease-in-out 0s infinite reverse;
 }
 .expandedHeart{
   transition: all .3s;
@@ -66,7 +69,7 @@ export default {
     width: 1%;
     padding: 76% 49% ;
     border: 3px solid skyblue;
-    border-radius: 5px; 
+    border-radius: var(--BodyBorderRadiues); 
     animation: heartbe .9s ease-in-out 0s infinite reverse;
     transition: all .3s;
       

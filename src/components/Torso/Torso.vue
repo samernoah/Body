@@ -57,7 +57,7 @@ transform: translate(-50% ,0);
 width: 40%;
 padding: 25% 0;    
 border: var(--specialborder);
-border-radius: 15px;
+border-radius: 35px;
 transition: all .2s;
 background-color: rgb(46, 49, 51);
 }
@@ -90,7 +90,7 @@ background-color: rgb(46, 49, 51);
   transform: translate(-50% ,0);
   padding: 25% 0;    
   border: var(--specialborder);
-  border-radius: 15px;
+  border-radius: var(--BodyBorderRadiues);
   transition: all .2s;
   background-color: rgb(46, 49, 51);
   width: 100%;

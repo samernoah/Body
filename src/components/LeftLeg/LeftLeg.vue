@@ -27,7 +27,7 @@ top: 58%;
 width: 15%;
 padding: 28% 0;    
 border: 3px solid skyblue;
-border-radius: 15px;
+border-radius: var(--BodyBorderRadiues);
 transition: transform .3s;
 }
 .LLcomp .leftleg:hover{

@@ -27,7 +27,7 @@ top: 23% ;
 width: 10%;
 padding: 24% 0;    
 border: 3px solid skyblue;
-border-radius: 15px;
+border-radius: var(--BodyBorderRadiues);
 transition: transform .3s;
 }
 .LAcomp .leftarm:hover{

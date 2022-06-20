@@ -24,13 +24,13 @@ methods: {
 <style>
 .headcomp .head{
 position: absolute;
-top: 8.5% ;
+top: 8% ;
 left:50%;
 transform: translate(-50% ,0);
-width: 17%;
-padding: 8% 0;    
+width: 19%;
+padding: 9% 0;    
 border: var(--specialborder);
-border-radius: 15px;
+border-radius: 35px;
 transition: transform .3s;
 }
 .headcomp .head:hover{

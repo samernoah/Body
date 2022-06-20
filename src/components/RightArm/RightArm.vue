@@ -28,7 +28,7 @@ top: 23% ;
 width: 10%;
 padding: 24% 0;    
 border: var(--specialborder);
-border-radius: 15px;
+border-radius: var(--BodyBorderRadiues);
 transition: transform .3s;
 }
 .RAcomp .rightarm:hover{

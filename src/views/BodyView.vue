@@ -100,9 +100,7 @@ mounted(){
   align-items: center;
   flex-wrap: wrap;
   gap: 25px;
-  min-height: 800px ;
-  border: 3px solid skyblue;
-  
+  min-height: 800px ;  
 }
 .bodycomp h1{
   color: #587b9e;
@@ -115,7 +113,7 @@ display: block;
 min-width: 500px;
 min-height: 750px;
 border: 3px solid skyblue;
-border-radius: 15px;
+border-radius: 50px;
 transform: scale(.8);
 transition: all .2s ;
 }

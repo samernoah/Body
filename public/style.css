@@ -3,8 +3,10 @@
   --viewscale: 1.04;
   --specialborder: 3px solid skyblue;
   --BorderColor: skyblue;
+  --BodyBorderRadiues: 35px;
+  --HeartBeatTime: calc((var(--HeartRate) / 60));
 }
 body {
   padding: 0;
-  background: rgb(46, 49, 51);
+  background: rgb(31, 36, 41);
 }
