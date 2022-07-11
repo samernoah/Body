@@ -31,7 +31,7 @@ computed:{
 },
 methods:{
   showInfo(){
-    this.$emit('info',this.HeartRate);
+    this.$store.commit('ChangingTheInfo',this.Info);
   },
   expand(){
     if(this.ComponentsArraylength===0 && this.ExpandedTorso === false){ 

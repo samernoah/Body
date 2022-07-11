@@ -14,7 +14,7 @@ export default {
   },
 methods: {
   showInfo(){
-    this.$emit('info',this.Info);
+    this.$store.commit('ChangingTheInfo',this.Info);
   }
 }
 

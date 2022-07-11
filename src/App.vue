@@ -1,16 +1,18 @@
 <template>
+
   <Header />
+
+ 
   <router-view/>
   
 </template>
 
 <script>
-import Footer from '@/components/fter.vue'
 import Header from './components/Header.vue'
 
 
 export default {
-  components: { Header, Footer }
+  components: { Header }
 }
 
 </script>
@@ -41,4 +43,7 @@ nav a.router-link-exact-active {
   border-radius: 5px;
   
 }
+
+
+
 </style>

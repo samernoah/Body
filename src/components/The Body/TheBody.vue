@@ -1,50 +1,60 @@
 <template>
 
-<h1>{{ Title }}</h1>
 
-<div class="bodycomp" ref="body" @resize="swidth" >
 
-  <button v-if="wanted" @click="updateheartrate(1)">increase HeartRate</button>
-  <button v-if="wanted" @click="updateheartrate(-1)">decrease HeartRate</button>
-  
-  <transition name="infoBox">
-    <BodyInfo v-if="Infoshow" :Info="Info" />
-  </transition>
+    <div class="body" :class="{sideviewbody:infoshow}" >
 
-   <transition name="bodyAnimation" appear>
-     <The-body/>
-   </transition> 
+      <div class="backbutton" v-if="ComponentsArrayOcupied" @click="BackOneExpantion" >Back</div>
 
- </div>
+      <Head @info="show"/>
+    
+        <div class="upperbody">
+            <LeftArm @info="show" />
+            <Torso @info="show"/>
+            <RightArm @info="show" />
+        </div>
+
+        <div class="lowerbody">
+          <LeftLeg @info="show" />
+          <RightLeg @info="show" />
+        </div>
+
+    </div>
+
+    
+
+ 
 
 
 
 </template>
 
 <script>
-import BodyInfo from '@/components/BodyInfo/BodyInfo.vue'
-import TheBody from '@/components/The Body/TheBody.vue'
+import Head from '@/components/Head/Head.vue'
+import Torso from '@/components/Torso/Torso.vue'
+import LeftArm from '@/components/LeftArm/LeftArm.vue'
+import RightArm from '@/components/RightArm/RightArm.vue'
+import RightLeg from '@/components/RightLeg/RightLeg.vue'
+import LeftLeg from '@/components/LeftLeg/LeftLeg.vue'
+
 
 export default {
-  components: { BodyInfo, TheBody },
+  components: { Head, Torso, LeftArm, RightArm, RightLeg, LeftLeg},
   name: 'Body',
 data(){
-    return {
-        Title: "Body",
-        wanted:false,
-    }
+    return {}
 },
 computed:{
 ComponentsArray(){ return this.$store.state.ComponentsArray},
-ComponentsArrayOcupied(){ return this.$store.state.ComponentsArray.length>0 },
-Info(){ return this.$store.state.InfoOfSellectedDivision.Info },
-Infoshow(){ return this.$store.state.InfoOfSellectedDivision.InfoShow },
+ComponentsArrayOcupied(){ return this.$store.state.ComponentsArray.length>0},
+infoshow(){ return this.$store.state.InfoOfSellectedDivision.InfoShow },
 ComponentsArrayLastComponent(){ 
   const CALC =this.ComponentsArray[(this.ComponentsArray.length)-1] ;
   return CALC
 }
 },
 methods: {
+  
     updateheartrate(amount){
       let HRS =this.$store.state.Components.BodyInfo.component.firstChild.children[1].innerText;
       let test = Boolean(parseInt(HRS)/2); 
@@ -63,24 +73,8 @@ mounted(){
 </script>
 
 <style>
-.bodycomp{
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 25px;
-  min-height: 800px ; 
-  transform-style: preserve-3d;
-  perspective: 1500px;
-   
-}
-.bodycomp h1{
-  color: #587b9e;
-  position: relative;
-  display: block;
-}
-.bodycomp .body{
+
+ .body{
 position: relative;
 display: block;
 min-width: 500px;
@@ -98,7 +92,7 @@ transform-style: preserve-3d;
   transform: rotateX(-7deg) rotateY(-28deg) rotateZ(0deg)  scale(0.8) translate(-6%,-4%);
   }
 
-.bodycomp .backbutton{
+.backbutton{
   color:rgba(0, 0, 0, 0.603);
   font-weight: bolder;
   font-family: 'Lucida Sans';
@@ -114,30 +108,10 @@ transform-style: preserve-3d;
   transform: translate(-150% , -60%);
   transition: all .3s;
 }
-.bodycomp .backbutton:hover{
+.backbutton:hover{
   box-shadow: 0 0 5px 5px  skyblue , 0 0 10px 10px rgba(255, 253, 253, 0.233);
   cursor: pointer;
 }
 
-.infoBox-enter-from,
-.infoBox-leave-to {
-  width:0;
-  opacity: 0;
-  transform:translate(-70%,0)
-}
-.infoBox-enter-active,
-.infoBox-leave-active{
-  transition: all 0.15s ease-in; 
-}
-
-.bodyAnimation-enter-from,
-.bodyAnimation-leave-to {
-  opacity: 0;
-  transform:translateX(30%)
-}
-.bodyAnimation-enter-active,
-.bodyAnimation-leave-active{
-  transition: all 0.3s ease-in; 
-}
 
 </style>

@@ -1,46 +1,31 @@
 <template>
-  <div class="infocomp" ref="infocomp">
-      <div class="content" ref="content">
+
+  <div class="infocomp" >
+
+    <transition name="change" >
+
+      <div v-if="intraInfo"   class="content">
         <h1>{{ data.Name }}</h1>
         <p>{{ data.Add }}</p>
       </div>
+      
+    </transition>
 
   </div>
+
 </template>
 
 <script>
 export default {
 props:[ 'Info' ],
 computed:{
-  data(){ return this.$props.Info  }
+  data(){ return this.$props.Info  },
+  intraInfo(){return this.$store.state.InfoOfSellectedDivision.IntraInfo}
 },
 mounted(){
 this.$store.state.Components.BodyInfo.component=this.$el;
-const content =this.$refs.infocomp;
-content.style.setProperty('opacity','0');
-content.style.setProperty('min-width','0');
-setTimeout(() => {
-content.style.setProperty('display','block');
-content.style.setProperty('opacity','1');
-content.style.setProperty('min-width','400px');
-}, 0);
-},
-beforeUnmount(){
-const content =this.$refs.infocomp;
-content.style.setProperty('opacity','0');
-content.style.setProperty('min-width','0');
-},
-updated(){
-  console.log(this.data);
-const content =this.$refs.infocomp;
-content.style.setProperty('min-width','0');
-content.style.setProperty('opacity','0');
-setTimeout(() => {
-content.style.setProperty('opacity','1');
-content.style.setProperty('min-width','400px');
-}, 400);
-
 }
+
 }
 </script>
 
@@ -48,14 +33,24 @@ content.style.setProperty('min-width','400px');
 .infocomp{
 display: block;
 min-width: 400px;
-top: 0px;
 padding: 10px;
 border: 3px solid skyblue;
 border-radius: 15px;
 margin-top: 25px;
-transition: all .3s ;
 }
-.infocomp .content{
-transition: all .3s ;
+
+.changing{
+  color: white;
+}
+
+.change-enter-from,
+.change-leave-to{
+  opacity: 0;
+  transform: scale(0.3);
+}
+
+.change-enter-active,
+.change-leave-active{
+transition: all .1s ease-in;
 }
 </style>

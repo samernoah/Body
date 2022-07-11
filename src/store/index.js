@@ -25,6 +25,14 @@ const store = createStore({
    // ==> components Array
           ,ComponentsArray:[]
 
+
+    // ==> info chamber
+    ,InfoOfSellectedDivision:{
+      Info:null,
+      InfoShow:false,
+      IntraInfo:false
+                             }
+
     //..>>end of state              
           }
 
@@ -52,7 +60,27 @@ const store = createStore({
       ManegingTheComponentsArray(s,p){
         if(p[0]==='Add'){s.ComponentsArray.push(p[1])}
         else if(p[0]==='Remove'){s.ComponentsArray.pop(p[1])}
+      },
+     //======================
+     ChangingTheInfo(s,p){
+       let IOSD = s.InfoOfSellectedDivision;
+      if(!IOSD.Info){
+        IOSD.Info=p;
+        IOSD.InfoShow=true;
+        IOSD.IntraInfo=true;
+      }else if(p.Name === IOSD.Info.Name && IOSD.InfoShow === true){
+        IOSD.Info=null;
+        IOSD.InfoShow=false;
+        IOSD.IntraInfo=false;
+      }else if(p.Name !== IOSD.Info.Name && IOSD.InfoShow === true){
+        IOSD.IntraInfo=false;
+        setTimeout(() => {
+          IOSD.Info = p;
+          IOSD.IntraInfo=true;
+        }, 100);
+        
       }
+     }
    } 
 })
 

@@ -13,8 +13,7 @@ export default {
   },
 methods: {
   showInfo(){
-    this.$emit('info',this.Info);
-    
+    this.$store.commit('ChangingTheInfo',this.Info);
   }
 }
 }
@@ -32,6 +31,6 @@ border-radius: var(--BodyBorderRadiues);
 transition: transform .3s;
 }
 .RAcomp .rightarm:hover{
-transform: scale(var(--viewscale));
+transform: scale(var(--viewscale)) translate3d(0,0,50px) ;
 }
 </style>

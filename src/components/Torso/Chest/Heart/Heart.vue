@@ -67,7 +67,7 @@ export default {
     top:0%;
     left: 49%;
     width: 1%;
-    padding: 76% 49% ;
+    padding: 77% 49% ;
     border: 3px solid skyblue;
     border-radius: var(--BodyBorderRadiues); 
     animation: heartbe .9s ease-in-out 0s infinite reverse;
