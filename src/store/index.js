@@ -15,10 +15,13 @@ const store = createStore({
 
    // ==> components
           ,Components:{
-
+            Header:{
+              HeaderMenue:null
+            },
             Torso:{},
             Heart:{},
-            BodyInfo:{}
+            BodyInfo:{},
+            BurgerMenu:{}
 
                       }
 
@@ -32,6 +35,12 @@ const store = createStore({
       InfoShow:false,
       IntraInfo:false
                              }
+
+
+    // ==> Mobile View
+    ,MobileView:{
+      Mobile:false
+    }                         
 
     //..>>end of state              
           }
@@ -80,7 +89,13 @@ const store = createStore({
         }, 100);
         
       }
+     },
+     //======================
+     ChangeTheMobileView(s,p){
+       if(p===true){s.MobileView.Mobile = true; console.log(s.MobileView.Mobile);}
+       else if (p===false){s.MobileView.Mobile = false; console.log(s.MobileView.Mobile)};
      }
+    
    } 
 })
 

@@ -60,9 +60,11 @@ border: var(--specialborder);
 border-radius: 35px;
 transition: all .2s;
 background-color: rgb(46, 49, 51);
+transform-style: preserve-3d;
 }
 .Torsocomp .torso:hover{
-  transform: translate(-50% ,0) scale(1.02);
+  transform-style: preserve-3d;
+  transform: translate(-50% ,0)  perspective(200px) translateZ(50px);
 }
 .Torsocomp .torso .torsocontent{
   position: absolute;
