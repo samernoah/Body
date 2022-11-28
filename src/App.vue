@@ -1,14 +1,13 @@
 <template>
-  <Header />
-
   <router-view />
 </template>
 
 <script>
 import Header from "./components/Header/Header.vue";
+import Footer from "./components/Footer/Footer.vue";
 
 export default {
-  components: { Header },
+  components: { Header, Footer },
 
   created() {
     window.addEventListener("resize", () => {
@@ -23,17 +22,30 @@ export default {
     } else if (window.innerWidth > 480) {
       this.$store.commit("ChangeTheMobileView", false);
     }
+    // window.Store = this.$store;
+    window.Intervals = {
+      SimulationInterval: null,
+      QueInterval: null,
+      StoreQueInterval: null,
+    };
   },
 };
 </script>
 
 <style>
 #app {
+  height: 100%;
   font-family: Tahoma, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #5bd3db;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  background: rgb(16, 18, 20);
+  border-radius: 15px;
+  overflow: auto;
 }
 
 nav {

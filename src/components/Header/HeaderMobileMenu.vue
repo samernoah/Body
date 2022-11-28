@@ -20,6 +20,9 @@ export default {
       this.$refs.BMB2.classList.toggle("BMBC");
       this.$refs.BMB3.classList.toggle("BMBC");
       this.$store.state.Components.Header.HeaderMenue.classList.toggle(
+        "Headertransition"
+      );
+      this.$store.state.Components.Header.HeaderMenue.classList.toggle(
         "HeaderNavActive"
       );
     },
@@ -42,7 +45,7 @@ export default {
   right: 5%;
   width: 35px;
   height: 35px;
-  z-index: 3;
+  z-index: 10;
 }
 .Mobile_HeaderMobileMenu:hover {
   cursor: pointer;

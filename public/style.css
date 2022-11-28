@@ -1,13 +1,42 @@
+html {
+  height: 100%;
+}
 :root {
   --HeartRate: 63;
   --viewscale: 1.04;
-  --specialborder: 3px solid skyblue;
+  --specialborder: 3px solid #2b90b9;
   --BorderColor: skyblue;
   --BodyBorderRadiues: 35px;
   --HeartBeatTime: calc((var(--HeartRate) / 60));
+  --DBsectionBorder: 1px rgb(48, 51, 54) solid;
+  --BodyDashBoardActiveIconShapeBGC: #9c99a7;
+  --BodyDashBoardNoneActiveIconShapeBGC: #383438;
+  --BodyDashBoardActiveIconBGC: #0789e0;
+}
+* {
+  z-index: 3;
+  font-family: sans-serif;
 }
 body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   padding: 0;
   margin: 0;
-  background: rgb(16, 18, 20);
+}
+.CenteredFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.StartIcon {
+  width: 6px;
+  height: 6px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 0 3px 1px #7c7c7c, 0 0 1px 1px #5a5959;
+  transform: translate(-1px, -1px);
+  display: inline-block;
+  margin: 0 3px;
 }

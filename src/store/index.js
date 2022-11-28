@@ -9,9 +9,13 @@ const store = createStore({
    // ==> body statistics
             Body:{
 
-                HeartRate: 63
-
+                HeartRate: 63,
+                BodyPool:[],
+                SimulationReady:false
                  }
+
+    // ==> Operations Que
+            ,OperationsQue:{value:[]}
 
    // ==> components
           ,Components:{
@@ -36,6 +40,20 @@ const store = createStore({
       IntraInfo:false
                              }
 
+
+     // ==> Body DashBoard Active Icon
+    ,BodyDashBoardActiveIcon:{
+      ActiveIcon:null
+                             },
+      
+      // ==> Body DashBoard Active Icon
+      BodyDashBoard:{
+        OrganDisplay:{
+          ChoosedOrgan:{ OrganName: null, OgranNameToDisplayOnOrgansMenu: null },
+        }
+      }                       
+     // ==> Store Que Interval
+     ,StoreQueInterval:false 
 
     // ==> Mobile View
     ,MobileView:{
@@ -91,13 +109,71 @@ const store = createStore({
       }
      },
      //======================
+     SelectActiveIcon(s,p){
+       let AIcon = s.BodyDashBoardActiveIcon ;
+       console.log(AIcon.ActiveIcon);
+       if( AIcon.ActiveIcon !== p ){
+        AIcon.ActiveIcon = p ;
+        console.log(AIcon.ActiveIcon);
+      }else{
+        AIcon.ActiveIcon = null ;
+      }
+      console.log(AIcon.ActiveIcon);
+
+     },
+     //======================
      ChangeTheMobileView(s,p){
-       if(p===true){s.MobileView.Mobile = true; console.log(s.MobileView.Mobile);}
-       else if (p===false){s.MobileView.Mobile = false; console.log(s.MobileView.Mobile)};
+       if(p===true){s.MobileView.Mobile = true; }
+       else if (p===false){s.MobileView.Mobile = false;};
+     },
+     //======================
+     OperationsQuePush(s,p){
+       s.OperationsQue.value.unshift(p) ;
+         },  
+     //======================
+     OperationsQuepop(s,p){
+      s.OperationsQue.value.pop() ;
+     },
+     //======================
+     ChangeTheChoosedOrgan(s,p){
+       s.BodyDashBoard.OrganDisplay.ChoosedOrgan.OrganName = p.OrganName ;
+       s.BodyDashBoard.OrganDisplay.ChoosedOrgan.OgranNameToDisplayOnOrgansMenu = p.OgranNameToDisplayOnOrgansMenu ;
+
+     },
+     //======================
+     PopulateTheBodyPool(s,p){
+        s.Body.BodyPool=[] ;
+
+         for(let val in p ){
+          s.Body.BodyPool.push(p[val])
+         }
+        
+     },
+     //======================
+     DePopulateTheBodyPool(s,p){
+      s.Body.BodyPool=[] ;
+     
+   },
+    //======================
+    MakeSimulationStateTrue(s,p){
+      s.Body.SimulationReady = true;
+     
+   },
+    //======================
+    MakeSimulationStatefalse(s,p){
+      s.Body.SimulationReady = false;
+     
+   },
+     //======================
+     BodyPoolValuesDisplayStateChange(s,p){
+      
+        // s.Body.BodyPool[p].ChosenForDisplay = !s.Body.BodyPool[p].ChosenForDisplay ;
+        console.log(s.Body.BodyPool[p].ChosenForDisplay);
+
      }
     
-   } 
-})
+   }, 
+  })
 
 //export store
 

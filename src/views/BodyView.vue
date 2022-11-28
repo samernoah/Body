@@ -1,143 +1,260 @@
 <template>
+  <div class="MainBodyDashBoardGridContainer">
+    <SideBar />
 
-<h1>{{ Title }}</h1>
+    <TopBar />
 
-<div class="bodycomp" ref="body" @resize="swidth" >
+    <div class="bodycomp" ref="body">
+      <div class="DBInfo">
+        <ControlPanel @SimulationButtonPressed="SimulationStarterFunction(5)" />
 
-  <button v-if="wanted" @click="updateheartrate(1)">increase HeartRate</button>
-  <button v-if="wanted" @click="updateheartrate(-1)">decrease HeartRate</button>
-  
-  <transition name="infoBox">
-    <BodyInfo v-if="Infoshow" :Info="Info" />
-  </transition>
+        <OrganDisplay />
+        <OrganDisplayOptionsMenu />
 
-   <transition name="bodyAnimation" appear>
-     <The-body/>
-   </transition> 
+        <BodyDashBoardChart class="Chart1 bvsection" />
 
- </div>
+        <BodyDashBoardChart class="Chart2 bvsection" />
 
+        <ValuesDisplay />
+        <ValuesDisplayOptionsMenu />
+      </div>
 
+      <div class="DBMain">
+        <TheBodyView />
 
+        <GeneralStatus />
+        <GeneralCondition />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import BodyInfo from '@/components/BodyInfo/BodyInfo.vue'
-import TheBody from '@/components/The Body/TheBody.vue'
+import TopBar from "../components/BodyComponents/BodyDashBoardComponents/TopBar/TopBar.vue";
+import SideBar from "../components/BodyComponents/BodyDashBoardComponents/SideBar/SideBar.vue";
+import ControlPanel from "../components/BodyComponents/BodyDashBoardComponents/ControlPanel/ControlPanel.vue";
+import TheBodyView from "@/components/BodyComponents/BodyDashBoardComponents/TheBodyView/TheBodyView.vue";
+import GeneralStatus from "@/components/BodyComponents/BodyDashBoardComponents/GeneralStatus/GeneralStatus.vue";
+import BodyDashBoardChart from "../components/BodyComponents/BodyDashBoardComponents/BodyDashBoardChart.vue";
+import OrganDisplay from "../components/BodyComponents/BodyDashBoardComponents/OrganDisplay/OrganDisplay.vue";
+import OrganDisplayOptionsMenu from "../components/BodyComponents/BodyDashBoardComponents/OrganDisplay/OrganDisplayOptionsMenu.vue";
+import ValuesDisplay from "../components/BodyComponents/BodyDashBoardComponents/ValuesDisplay/ValuesDisplay.vue";
+import ValuesDisplayOptionsMenu from "../components/BodyComponents/BodyDashBoardComponents/ValuesDisplay/ValuesDisplayOptionsMenu.vue";
+import GeneralCondition from "../components/BodyComponents/BodyDashBoardComponents/GeneralCondition/GeneralCondition.vue";
+import ColoredTitle from "../components/BodyComponents/BodyDashBoardComponents/ColoredTitle.vue";
+import SimulationStarterFunction from "../BodySimulation/MainMethods/SimulationStarterFunction";
 
 export default {
-  components: { BodyInfo, TheBody },
-  name: 'Body',
-data(){
+  components: {
+    TopBar,
+    SideBar,
+    ControlPanel,
+    TheBodyView,
+    GeneralStatus,
+    BodyDashBoardChart,
+    OrganDisplay,
+    OrganDisplayOptionsMenu,
+    ValuesDisplay,
+    ValuesDisplayOptionsMenu,
+    GeneralCondition,
+    ColoredTitle,
+  },
+  name: "Body",
+  setup() {
+    return { SimulationStarterFunction };
+  },
+  data() {
     return {
-        Title: "Body",
-        wanted:false,
-    }
-},
-computed:{
-ComponentsArray(){ return this.$store.state.ComponentsArray},
-ComponentsArrayOcupied(){ return this.$store.state.ComponentsArray.length>0 },
-Info(){ return this.$store.state.InfoOfSellectedDivision.Info },
-Infoshow(){ return this.$store.state.InfoOfSellectedDivision.InfoShow },
-ComponentsArrayLastComponent(){ 
-  const CALC =this.ComponentsArray[(this.ComponentsArray.length)-1] ;
-  return CALC
-}
-},
-methods: {
-    updateheartrate(amount){
-      let HRS =this.$store.state.Components.BodyInfo.component.firstChild.children[1].innerText;
-      let test = Boolean(parseInt(HRS)/2); 
-      this.$store.commit('Updateheartrate' , amount );
-      if(test){this.$store.state.Components.BodyInfo.component.firstChild.children[1].innerText=this.$store.state.Body.HeartRate};
+      Title: "Body",
+      wanted: false,
+    };
+  },
+  computed: {
+    ComponentsArray() {
+      return this.$store.state.ComponentsArray;
     },
-    BackOneExpantion(){
-      this.$store.commit('ChangeExpandingState',['false',this.ComponentsArrayLastComponent]);
-        this.$store.commit('ManegingTheComponentsArray',['Remove',this.ComponentsArrayLastComponent]);
-    }
-},
-mounted(){
-  document.documentElement.style.setProperty('--HeartRate',this.$store.state.HeartRate)
-}
-}
+    ComponentsArrayOcupied() {
+      return this.$store.state.ComponentsArray.length > 0;
+    },
+    ComponentsArrayLastComponent() {
+      const CALC = this.ComponentsArray[this.ComponentsArray.length - 1];
+      return CALC;
+    },
+  },
+  methods: {
+    SimulationActivation() {
+      console.log("BodyViewComponent");
+    },
+    updateheartrate(amount) {
+      let HRS =
+        this.$store.state.Components.BodyInfo.component.firstChild.children[1]
+          .innerText;
+      let test = Boolean(parseInt(HRS) / 2);
+      this.$store.commit("Updateheartrate", amount);
+      if (test) {
+        this.$store.state.Components.BodyInfo.component.firstChild.children[1].innerText =
+          this.$store.state.Body.HeartRate;
+      }
+    },
+    BackOneExpantion() {
+      this.$store.commit("ChangeExpandingState", [
+        "false",
+        this.ComponentsArrayLastComponent,
+      ]);
+      this.$store.commit("ManegingTheComponentsArray", [
+        "Remove",
+        this.ComponentsArrayLastComponent,
+      ]);
+    },
+  },
+  mounted() {
+    document.documentElement.style.setProperty(
+      "--HeartRate",
+      this.$store.state.HeartRate
+    );
+  },
+};
 </script>
 
 <style>
-.bodycomp{
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 25px;
-  min-height: 800px ; 
-  transform-style: preserve-3d;
-  perspective: 1500px;
-   
+.MainBodyDashBoardGridContainer {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: 3em auto;
+  grid-template-rows: 3em auto;
+  grid-template-areas:
+    "TopBar TopBar "
+    "SideBar BodyDashBoard ";
 }
-.bodycomp h1{
+
+.bodycomp {
+  position: relative;
+  background: rgb(16, 18, 20);
+  border-radius: 15px;
+  overflow: auto;
+  grid-area: BodyDashBoard;
+  display: grid;
+  grid-template-columns: auto 32em;
+  grid-template-areas: "DBInfo DBMain";
+}
+.DBInfo {
+  grid-area: DBInfo;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 8em auto auto;
+  justify-items: center;
+  align-items: center;
+}
+.DBMain {
+  grid-area: DBMain;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "BodyInfo Body"
+    "CurrentOps CurrentOps";
+}
+.bodycomp h1 {
   color: #587b9e;
   position: relative;
   display: block;
 }
-.bodycomp .body{
-position: relative;
-display: block;
-min-width: 500px;
-min-height: 750px;
-border: 3px solid skyblue;
-border-radius: 50px;
-
-transition: all .2s ;
-transform-style: preserve-3d;
-
-
-}
-
-.sideviewbody{
-  transform: rotateX(-7deg) rotateY(-28deg) rotateZ(0deg)  scale(0.8) translate(-6%,-4%);
-  }
-
-.bodycomp .backbutton{
-  color:rgba(0, 0, 0, 0.603);
-  font-weight: bolder;
-  font-family: 'Lucida Sans';
-  background-color: skyblue;
-  width: 45px;
-  height: 45px;
+.bvsheader {
+  height: 30px;
+  border-bottom: var(--DBsectionBorder);
+  color: white;
+  text-align: left;
+  font-size: 11.5px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  position: absolute;
-  box-shadow: 0 0 5px 5px  skyblue , 0 0 10px 10px rgba(0, 0, 0, 0.452);
-  border-radius: 50%;
-  transform: translate(-150% , -60%);
-  transition: all .3s;
 }
-.bodycomp .backbutton:hover{
-  box-shadow: 0 0 5px 5px  skyblue , 0 0 10px 10px rgba(255, 253, 253, 0.233);
-  cursor: pointer;
+.bvsection {
+  position: relative;
+  background-color: rgb(34, 37, 39);
+  border: var(--DBsectionBorder);
+  z-index: 15;
+  transition: all 0.2s;
+}
+.bvsection2 {
+  position: relative;
+  background-color: rgb(34, 37, 39);
+  z-index: 15;
+  transition: all 0.2s;
+}
+.bvsheader2 {
+  height: 30px;
+  background-color: rgb(28 30 32);
+  color: white;
+  text-align: left;
+  font-size: 11.5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.SideInfo {
+  width: 260px;
+  height: 280px;
+  grid-column: span 1;
+  transform: translate(10px, 0);
+}
+.Chart1 {
+  grid-column: span 1;
+  transform: translate(8px, -2px);
+}
+.Chart2 {
+  grid-column: span 1;
+  transform: translate(-2px, -2px);
+}
+
+.BottomInfo2 {
+  width: 284px;
+  height: 208px;
+  grid-column: span 1;
+  justify-self: stretch;
+  transform: translate(-10px, 0);
+}
+
+.bodysection .bsheader {
+  width: 100%;
+  border-top: var(--DBsectionBorder);
+  border-bottom: var(--DBsectionBorder);
+}
+.spacediv {
+  display: inline-block;
+  width: 13px;
+}
+
+.sideviewbody {
+  transform: rotateX(-7deg) rotateY(-28deg) rotateZ(0deg) scale(0.8)
+    translate(-6%, -4%);
 }
 
 .infoBox-enter-from,
 .infoBox-leave-to {
-  width:0;
+  width: 0;
   opacity: 0;
-  transform:translate(-70%,0)
+  transform: translate(-70%, 0);
 }
 .infoBox-enter-active,
-.infoBox-leave-active{
-  transition: all 0.15s ease-in; 
+.infoBox-leave-active {
+  transition: all 0.15s ease-in;
 }
 
 .bodyAnimation-enter-from,
 .bodyAnimation-leave-to {
   opacity: 0;
-  transform:translateX(30%)
+  transform: translateX(30%);
 }
 .bodyAnimation-enter-active,
-.bodyAnimation-leave-active{
-  transition: all 0.3s ease-in; 
+.bodyAnimation-leave-active {
+  transition: all 0.3s ease-in;
 }
-
+.TheBodyTopDivForActivity {
+  position: absolute;
+  width: 99%;
+  height: 92%;
+  z-index: 16;
+}
 </style>
