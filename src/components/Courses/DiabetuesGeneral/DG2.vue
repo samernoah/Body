@@ -26,9 +26,9 @@ export default {
         qstn: "This is A Quistion ?",
         CorrectAnswerId: 2,
         choises: [
-          { id: 1, choise: "this is choise bumber 1" },
-          { id: 2, choise: "this is choise bumber 2" },
-          { id: 3, choise: "this is choise bumber 3" },
+          { id: 1, choise: "this is choise number 1" },
+          { id: 2, choise: "this is choise number 2" },
+          { id: 3, choise: "this is choise number 3" },
         ],
       },
     };

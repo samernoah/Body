@@ -1,6 +1,6 @@
 <template>
-  <HeaderMobileMenu />
   <header class="Header">
+    <HeaderMobileMenu />
     <h2>Body</h2>
     <nav class="HeaderNav" ref="HM">
       <router-link to="/">Home</router-link>
@@ -28,7 +28,7 @@ export default {
 
 
 <style >
-header {
+.Header {
   position: relative;
   z-index: 8;
 }
@@ -40,18 +40,23 @@ header {
 }
 .Header nav {
   margin-top: 17px;
+  display: block;
+  padding: 30px;
 }
+
 .Header nav a {
   text-decoration: none;
 }
+
 .Header hr {
   width: 70%;
+  border: 1px rgb(17 108 112 / 39%) solid;
 }
 .HeaderNav {
   position: relative;
   z-index: 100;
 }
-@media screen and (min-width: 582px) {
+@media screen and (min-width: 581px) {
   .Header h2 {
     position: absolute;
     top: -40px;
@@ -62,7 +67,7 @@ header {
     text-align: right;
   }
   .Header hr {
-    margin-top: 7px;
+    margin-top: 18px;
   }
 }
 @media screen and (max-width: 580px) and (min-width: 481px) {
@@ -72,10 +77,11 @@ header {
   }
   .Header nav {
     position: relative;
-    margin: 7px auto 1px auto;
+    margin: 18px auto 1px auto;
+    padding: 0px;
   }
   .Header hr {
-    margin-top: 7px;
+    margin-top: 18px;
   }
 }
 @media screen and (max-width: 480px) {
@@ -91,20 +97,26 @@ header {
 
   .HeaderNav {
     position: absolute;
-    transform: translateY(-270px);
+    transform: translateY(-270px) translateX(-50%);
     opacity: 0;
     border-radius: 10px;
     top: 0;
-    left: 0;
-    width: 87%;
-    background-color: rgba(0, 0, 0, 0.98);
+    left: 50%;
+    width: 98%;
+    background: -webkit-linear-gradient(
+      top left,
+      rgb(3 34 31 / 98%),
+      rgb(1 12 12 / 98%),
+      rgb(1 17 18 / 98%)
+    );
+    border: 1px #2c363430 solid;
     z-index: 100;
   }
   .Headertransition {
     transition: all 0.2s ease-in;
   }
   .HeaderNavActive {
-    transform: translateY(-17px);
+    transform: translateY(-17px) translateX(-50%);
     opacity: 1;
     z-index: 100;
   }
@@ -116,11 +128,14 @@ header {
     position: relative;
     font-size: 1.5rem;
     display: block;
-    padding: 10px;
-    margin: 2px -31px;
-    width: 110%;
+    margin: 5px auto;
+    padding: 10px 0px;
+    width: 100%;
     border-radius: 5px;
     z-index: 10;
+  }
+  .Header nav {
+    padding: 0px;
   }
 }
 </style>

@@ -40,8 +40,10 @@ export default {
       this.ChartMenuActive = !this.ChartMenuActive;
     },
     ChooseChartFromChartsMenue() {
-      this.ChartName = event.path[0]["__vnode"].key;
-      this.ChartNameForHeaderDisplay = event.path[0]["__vnode"].children;
+      // console.log(event);
+      // window.testval = event;
+      this.ChartName = event.srcElement.__vnode.props.key;
+      this.ChartNameForHeaderDisplay = event.srcElement.__vnode.children;
       this.ChartMenuActive = false;
     },
   },

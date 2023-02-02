@@ -1,5 +1,6 @@
 <template>
   <div class="Courses">
+    <Header />
     <h1>Courses</h1>
     <h3 class="Courses-h3">Choose One Of The Available Courses</h3>
     <section class="availableCourses">
@@ -21,11 +22,17 @@
         </router-link>
       </div>
     </section>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Header from "../components/Header/Header.vue";
+import Footer from "../components/Footer/Footer.vue";
+
 export default {
+  components: { Header, Footer },
+
   data() {
     return {
       AvailableCourses: [
@@ -39,6 +46,17 @@ export default {
 </script>
 
 <style>
+.Courses {
+  position: relative;
+  min-height: 170%;
+  width: 100%;
+  background-image: url(../assets/3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-flow: column;
+  transition: all 0.2s;
+}
 .Courses .courseRouterLink {
   text-decoration: none;
 }
@@ -50,7 +68,6 @@ export default {
   justify-content: space-around;
   align-items: stretch;
   flex-wrap: wrap;
-
   width: 90%;
   margin: 40px auto 20px auto;
 }
@@ -71,7 +88,7 @@ export default {
 .Courses .courses h3 {
   color: rgb(83, 147, 182);
 }
-.Courses a {
+.Courses .availableCourses a {
   display: block;
 }
 </style>

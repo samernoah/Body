@@ -1,9 +1,9 @@
 <template>
-  <div class="SimulationStatus CenteredFlex">
+  <div class="SimulationStatus">
     <div class="SimulationStatusHeader CenteredFlex">
       <div class="SimulationStatusHeaderContent">Simulation Status</div>
     </div>
-    <div class="SimulationStatusContent CenteredFlex">
+    <div class="SimulationStatusContent">
       <div v-if="IsSimulationReady">Ready</div>
       <div v-else>Pending</div>
     </div>
@@ -25,10 +25,10 @@ export default {
 .SimulationStatus {
   position: absolute;
   width: 107px;
-  height: 46px;
-  top: 41px;
-  left: 139px;
-  border: 1px rgb(19 110 171) solid;
+  height: 22px;
+  top: 72px;
+  left: 17px;
+  /* border: 1px white solid; */
   color: white;
   font-size: 16px;
   border-radius: 6px;
@@ -38,10 +38,15 @@ export default {
   position: absolute;
   width: 100%;
   height: 22px;
-  border-bottom: 1px #303336 solid;
-  border-radius: 3px 3px 0 0;
+  /* border-bottom: 1px #303336 solid; */
+  border-radius: 3px;
   color: white;
-  background-color: rgb(19 110 171);
+  background: -webkit-linear-gradient(
+    top left,
+    rgb(24 43 112),
+    rgb(32 77 159),
+    rgb(17 52 112)
+  );
   font-size: 12px;
   top: 0;
   left: 0;
@@ -49,8 +54,8 @@ export default {
 
 .SimulationStatus .SimulationStatusContent {
   color: white;
-  font-family: tahoma;
-  transform: translate(0px, 11px);
+  /* font-family: tahoma; */
+  transform: translate(87px, 4px);
   font-size: 12px;
 }
 </style>

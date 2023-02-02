@@ -1,7 +1,7 @@
 <template>
-  <footer class="Footer">
-    <div class="footer">
-      <p>Copyright &copy; Body</p>
+  <footer class="Footer CenteredFlex">
+    <div class="footer CenteredFlex">
+      <div class="footerp">Copyright &copy; Body</div>
     </div>
   </footer>
 </template>
@@ -12,16 +12,18 @@ export default {};
 
 <style>
 .Footer {
+  min-height: 55px;
   margin-top: auto;
+  background-color: transparent;
+  border-bottom: 1px white solid;
 }
 .Footer .footer {
   width: 100%;
-
-  border-top: 1px white solid;
-  border-bottom: 1px white solid;
+  border-top: 1px rgb(17 108 112 / 39%) solid;
 }
-.Footer p {
+.Footer .footerp {
   color: white;
   font-size: 0.8rem;
+  margin-top: 14px;
 }
 </style>

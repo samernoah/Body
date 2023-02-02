@@ -35,6 +35,7 @@ export default {
 <style>
 #app {
   height: 100%;
+  width: 100%;
   font-family: Tahoma, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -59,21 +60,33 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #ffffff;
-  background: rgba(63, 124, 191, 0.637);
-  padding: 6px 5px;
-  border-radius: 5px;
+  background: -webkit-linear-gradient(
+    top left,
+    rgb(24 112 104 / 37%),
+    rgb(38 187 187 / 50%),
+    rgb(17 108 112 / 39%)
+  );
+  border: 1px #197a6952 solid;
+  padding: 6px 15px;
+  border-radius: 0px;
 }
 @media screen and (max-width: 480px) {
   nav a {
     color: #ffffff;
-    margin: 0;
+    margin: 0 auto;
   }
   nav a.router-link-exact-active {
     color: #ffffff;
-    background: rgba(84, 132, 184, 0.637);
-    padding: 10px;
-    border-radius: 5px;
-    width: 110%;
+    background: -webkit-linear-gradient(
+      top left,
+      rgb(24 112 104 / 37%),
+      rgb(38 187 187 / 50%),
+      rgb(17 108 112 / 39%)
+    );
+    border: 1px #197a6952 solid;
+    border-radius: 0px;
+    padding: 6px 0px;
+    width: 100%;
   }
 }
 </style>
