@@ -60,13 +60,13 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #ffffff;
-  background: -webkit-linear-gradient(
+  /* background: -webkit-linear-gradient(
     top left,
     rgb(24 112 104 / 37%),
     rgb(38 187 187 / 50%),
     rgb(17 108 112 / 39%)
   );
-  border: 1px #197a6952 solid;
+  border: 1px #197a6952 solid; */
   padding: 6px 15px;
   border-radius: 0px;
 }
@@ -77,13 +77,6 @@ nav a.router-link-exact-active {
   }
   nav a.router-link-exact-active {
     color: #ffffff;
-    background: -webkit-linear-gradient(
-      top left,
-      rgb(24 112 104 / 37%),
-      rgb(38 187 187 / 50%),
-      rgb(17 108 112 / 39%)
-    );
-    border: 1px #197a6952 solid;
     border-radius: 0px;
     padding: 6px 0px;
     width: 100%;

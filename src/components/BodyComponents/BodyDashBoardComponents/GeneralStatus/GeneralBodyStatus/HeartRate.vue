@@ -11,7 +11,7 @@
     <div class="Status">
       <div class="Label">Heart Rate</div>
       <div class="Numbers">
-        <div class="Rate">63</div>
+        <div class="Rate">{{ HeartRate }}</div>
         <div class="Unit">bpm</div>
       </div>
     </div>
@@ -21,6 +21,11 @@
 <script>
 export default {
   name: "HeartRate",
+  computed: {
+    HeartRate() {
+      return this.$store.state.Body.Organs.Heart.HeartRate.value;
+    },
+  },
 };
 </script>
 

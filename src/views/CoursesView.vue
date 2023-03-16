@@ -50,7 +50,7 @@ export default {
   position: relative;
   min-height: 170%;
   width: 100%;
-  background-image: url(../assets/3.jpg);
+  background-image: url(../assets/5.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -60,6 +60,7 @@ export default {
 .Courses .courseRouterLink {
   text-decoration: none;
 }
+
 .Courses .Courses-h3 {
   color: white;
 }
@@ -75,8 +76,14 @@ export default {
   margin: 20px 10px 10px 10px;
   width: 216px;
   height: 180px;
-  border: 2px solid skyblue;
-  border-radius: 15px;
+  background: -webkit-linear-gradient(
+    top left,
+    rgb(24 112 104 / 38%),
+    rgb(38 187 187 / 38%),
+    rgb(17 108 112 / 38%)
+  );
+  border: 1px #197a6930 solid;
+  color: white;
   cursor: pointer;
   padding: 10px;
 }
@@ -85,8 +92,11 @@ export default {
   font-size: 2rem;
   color: rgb(83, 147, 182);
 }
+.Courses .courseRouterLink h1 {
+  color: white;
+}
 .Courses .courses h3 {
-  color: rgb(83, 147, 182);
+  color: white;
 }
 .Courses .availableCourses a {
   display: block;

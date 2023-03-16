@@ -1,13 +1,20 @@
 <template>
   <footer class="Footer CenteredFlex">
-    <div class="footer CenteredFlex">
+    <div class="footer CenteredFlex" ref="footerupborder">
       <div class="footerp">Copyright &copy; Body</div>
     </div>
   </footer>
 </template>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    if (window.location.pathname === "/thequestionsbank") {
+      this.$refs.footerupborder.style.borderTop =
+        "1px rgb(201 122 0 / 39%) solid";
+    }
+  },
+};
 </script>
 
 <style>

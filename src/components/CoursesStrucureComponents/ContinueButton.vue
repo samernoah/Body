@@ -1,5 +1,5 @@
 <template>
-  <div class="ContinueButton" @click="Continue">Continue</div>
+  <div class="ContinueButton CenteredFlex" @click="Continue">Continue</div>
 </template>
 
 <script>
@@ -16,13 +16,19 @@ export default {
 <style>
 .ContinueButton {
   color: white;
-  font-size: 22px;
+  font-size: 18px;
   margin: 20px auto;
-  border: 1px rgb(23, 23, 24) solid;
-  background-color: rgb(45, 107, 148);
-  width: 250px;
+  background: -webkit-linear-gradient(
+    top left,
+    rgb(24 100 112 / 90%),
+    rgb(38 147 187 / 90%),
+    rgb(17 90 112 / 90%)
+  );
+  border: 1px #195a7ab0 solid;
+  width: 161px;
   height: 35px;
   border-radius: 35px;
+  padding: 5px 0px;
 }
 .ContinueButton:hover {
   cursor: pointer;

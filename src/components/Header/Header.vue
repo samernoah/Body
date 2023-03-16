@@ -6,22 +6,44 @@
       <router-link to="/">Home</router-link>
       <router-link to="/body">Body</router-link>
       <router-link to="/courses">Courses</router-link>
+      <router-link to="/thequestionsbank">The Quetions Bank</router-link>
       <router-link to="/ComponentTest">CT</router-link>
       <router-link :to="{ name: 'about' }">About</router-link>
     </nav>
-    <hr />
+    <hr ref="Headerhr" />
   </header>
 </template>
 
 <script>
 import HeaderMobileMenu from "./HeaderMobileMenu.vue";
 export default {
-  mounted() {
-    this.$store.state.Components.Header.HeaderMenue = this.$refs.HM;
-  },
   components: { HeaderMobileMenu },
   updated() {
     console.log("HeaderUpdated");
+  },
+  mounted() {
+    console.log(this.$refs.HM);
+    this.$store.state.Components.Header.HeaderMenu = this.$refs.HM;
+    if (window.location.pathname === "/thequestionsbank") {
+      this.$refs.HM.querySelector(
+        "a.router-link-exact-active"
+      ).style.background =
+        "-webkit-linear-gradient(top left,rgb(112 77 24 / 50%),rgb(187 163 38 / 50%),rgb(112 83 17 / 50%))";
+
+      this.$refs.HM.querySelector("a.router-link-exact-active").style.border =
+        "1px #9b610759 solid";
+      this.$refs.Headerhr.style.border = "1px rgb(201 122 0 / 39%) solid";
+    } else {
+      this.$refs.HM.querySelector(
+        "a.router-link-exact-active"
+      ).style.background =
+        "-webkit-linear-gradient(top left,rgb(24 112 104 / 38%),rgb(38 187 187 / 38%),rgb(17 108 112 / 38%))";
+      this.$refs.HM.querySelector("a.router-link-exact-active").style.border =
+        "1px #197a6930 solid";
+    }
+  },
+  computed: {
+    blueglasseffect() {},
   },
 };
 </script>
@@ -39,9 +61,8 @@ export default {
   cursor: pointer;
 }
 .Header nav {
-  margin-top: 17px;
-  display: block;
-  padding: 30px;
+  width: 80%;
+  margin: 0 59px 0 auto;
 }
 
 .Header nav a {
@@ -51,6 +72,8 @@ export default {
 .Header hr {
   width: 70%;
   border: 1px rgb(17 108 112 / 39%) solid;
+  transform: translate(0, 10px);
+  box-shadow: 0 2px 7px #03164e;
 }
 .HeaderNav {
   position: relative;
@@ -65,6 +88,7 @@ export default {
   .Header nav {
     padding-right: 80px;
     text-align: right;
+    transform: translate(0, 12px);
   }
   .Header hr {
     margin-top: 18px;
@@ -79,6 +103,8 @@ export default {
     position: relative;
     margin: 18px auto 1px auto;
     padding: 0px;
+    width: 100%;
+    text-align: center;
   }
   .Header hr {
     margin-top: 18px;

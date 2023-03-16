@@ -10,7 +10,7 @@
     <div class="Status">
       <div class="Label">PO2 Saturation</div>
       <div class="Numbers">
-        <div class="Rate">100</div>
+        <div class="Rate">{{ PO2Saturation }}</div>
         <div class="Unit">%</div>
       </div>
     </div>
@@ -20,6 +20,11 @@
 <script>
 export default {
   name: "PO2Saturation",
+  computed: {
+    PO2Saturation() {
+      return this.$store.state.Body.Organs.CircularSystemAndBlood.PO2Saturation;
+    },
+  },
 };
 </script>
 

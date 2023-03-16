@@ -13,7 +13,7 @@
     <div class="Status">
       <div class="Label">Respiratory Rate</div>
       <div class="Numbers">
-        <div class="Rate">18</div>
+        <div class="Rate">{{ RespiratoryRate }}</div>
         <div class="Unit">apm</div>
       </div>
     </div>
@@ -23,6 +23,11 @@
 <script>
 export default {
   name: "RespiratoryRate",
+  computed: {
+    RespiratoryRate() {
+      return this.$store.state.Body.Organs.Lungs.RespiratoryRate;
+    },
+  },
 };
 </script>
 

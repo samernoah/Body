@@ -175,6 +175,7 @@ export default {
   border: var(--DBsectionBorder);
   z-index: 15;
   transition: all 0.2s;
+  border-radius: 5px;
 }
 .bvsection2 {
   position: relative;

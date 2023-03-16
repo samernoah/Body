@@ -46,11 +46,11 @@ export default {
 .DG {
   position: relative;
   width: 100%;
+  min-height: -webkit-fill-available;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 40px auto;
-  background-color: rgb(16, 18, 20);
+  margin: 0 auto;
 }
 .DG .Csection {
   position: relative;

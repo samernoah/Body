@@ -11,7 +11,9 @@
     <div class="Status">
       <div class="Label">Blood Presure</div>
       <div class="Numbers">
-        <div class="Rate">120/80</div>
+        <div class="Rate">
+          {{ BloodPresureSystole }}/{{ BloodPresureDiastole }}
+        </div>
         <div class="Unit">Hgm</div>
       </div>
     </div>
@@ -21,6 +23,16 @@
 <script>
 export default {
   name: "BloodPresure",
+  computed: {
+    BloodPresureSystole() {
+      return this.$store.state.Body.Organs.CircularSystemAndBlood.BloodPresure
+        .Systole;
+    },
+    BloodPresureDiastole() {
+      return this.$store.state.Body.Organs.CircularSystemAndBlood.BloodPresure
+        .Diastole;
+    },
+  },
 };
 </script>
 

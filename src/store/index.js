@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import Questions from "./QuestionsBank.js"
 
 const store = createStore({
 
@@ -6,10 +7,28 @@ const store = createStore({
 
    state: {
 
-   // ==> body statistics
+   // ==> body 
             Body:{
-
-                HeartRate: 63,
+              Organs:{
+                Heart:{
+                  bloodsupply:{name:'Blood Supply', value:100, unit:"%"},
+                  HeartRate:{name:'Heart Rate', value:63, unit:"bpm"},                  
+                  rythem:{name:'Rythem', value:'Regular', unit:"."},
+                  abnormalsounds:{name:'Abnormal Sounds', value:'Absent', unit:"."},                 
+                },
+                Lungs:{
+                  RespiratoryRate:18,
+                },
+                CircularSystemAndBlood:{
+                  BloodPresure:{Systole:120 , Diastole:80},
+                  PO2Saturation:100
+                },
+                ThePancreas:{
+                  bloodsupply:{name:'Blood Supply', value:100, unit:"%"},
+                  size:{name:'Size', value:'consistent', unit:"."},
+                  shape:{name:'Shape', value:'No Irregularities Found', unit:"."}
+                }
+              },
                 BodyPool:[],
                 SimulationReady:false
                  }
@@ -20,7 +39,7 @@ const store = createStore({
    // ==> components
           ,Components:{
             Header:{
-              HeaderMenue:null
+              HeaderMenu:null
             },
             Torso:{},
             Heart:{},
@@ -59,6 +78,9 @@ const store = createStore({
     ,MobileView:{
       Mobile:false
     }                         
+
+    // ==> Quistions
+    ,Questions
 
     //..>>end of state              
           }

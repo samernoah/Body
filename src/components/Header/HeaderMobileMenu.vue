@@ -16,14 +16,21 @@
 export default {
   methods: {
     HeaderMenuClick() {
+      console.log(this.$store.state.Components.Header.HeaderMenu);
       this.$refs.BMB1.classList.toggle("BMBC");
       this.$refs.BMB2.classList.toggle("BMBC");
       this.$refs.BMB3.classList.toggle("BMBC");
-      this.$store.state.Components.Header.HeaderMenue.classList.toggle(
+      this.$store.state.Components.Header.HeaderMenu.classList.toggle(
         "Headertransition"
       );
-      this.$store.state.Components.Header.HeaderMenue.classList.toggle(
+      this.$store.state.Components.Header.HeaderMenu.classList.toggle(
+        "CoursesHeadertransition"
+      );
+      this.$store.state.Components.Header.HeaderMenu.classList.toggle(
         "HeaderNavActive"
+      );
+      this.$store.state.Components.Header.HeaderMenue.classList.toggle(
+        "CoursesHeaderNavActive"
       );
     },
   },

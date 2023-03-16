@@ -40,3 +40,23 @@ body {
   display: inline-block;
   margin: 0 3px;
 }
+
+.BlueGlassEffect {
+  background: -webkit-linear-gradient(
+    top left,
+    rgb(24 112 104 / 38%),
+    rgb(38 187 187 / 38%),
+    rgb(17 108 112 / 38%)
+  );
+  border: 1px #197a6930 solid;
+}
+
+.OrangeGlassEffect {
+  background: -webkit-linear-gradient(
+    top left,
+    rgb(112 77 24 / 73%),
+    rgb(187 163 38 / 73%),
+    rgb(112 83 17 / 73%)
+  );
+  border: 1px #9b610759 solid;
+}

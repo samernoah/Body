@@ -4,7 +4,6 @@
       <component :is="comp" @RightA="RightAnswerMM"></component>
     </transition>
   </div>
-  <button class="btn" @click="show = !show">test</button>
 </template>
 
 <script>
@@ -42,11 +41,12 @@ export default {
 <style>
 .DI {
   position: relative;
-  width: 95%;
+  width: 100%;
+  min-height: -webkit-fill-available;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 40px auto;
+  margin: 0 auto;
 }
 .DI .Csection {
   position: relative;

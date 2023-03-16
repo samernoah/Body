@@ -10,6 +10,8 @@
       </div>
     </transition>
 
+    <img class="svgimg" src="../../../assets/proto1test3.svg" />
+
     <Head />
 
     <div class="upperbody">
@@ -96,6 +98,14 @@ export default {
   z-index: 15;
   transition: all 0.2s;
   transform-style: preserve-3d;
+}
+
+.body .svgimg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
 }
 
 .backbutton {

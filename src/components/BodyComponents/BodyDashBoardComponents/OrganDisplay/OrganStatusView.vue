@@ -1,5 +1,9 @@
 <template>
-  <div class="OrganStatusView"></div>
+  <div class="OrganStatusView">
+    <slot></slot>
+    <slot name="Heart"></slot>
+    <slot name="Pancreas"></slot>
+  </div>
 </template>
 
 <script>
@@ -12,6 +16,6 @@ export default {
 .OrganStatusView {
   position: relative;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 }
 </style>
