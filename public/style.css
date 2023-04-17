@@ -1,6 +1,7 @@
 html {
   height: 100%;
 }
+
 :root {
   --HeartRate: 63;
   --viewscale: 1.04;
@@ -13,10 +14,13 @@ html {
   --BodyDashBoardNoneActiveIconShapeBGC: #383438;
   --BodyDashBoardActiveIconBGC: #0789e0;
 }
+
 * {
   z-index: 3;
   font-family: sans-serif;
+  transition: all 0.3s ease-in;
 }
+
 body {
   height: 100%;
   display: flex;
@@ -24,6 +28,7 @@ body {
   padding: 0;
   margin: 0;
 }
+
 .CenteredFlex {
   display: flex;
   justify-content: center;
@@ -42,21 +47,27 @@ body {
 }
 
 .BlueGlassEffect {
-  background: -webkit-linear-gradient(
-    top left,
-    rgb(24 112 104 / 38%),
-    rgb(38 187 187 / 38%),
-    rgb(17 108 112 / 38%)
-  );
+  background: -webkit-linear-gradient(top left,
+      rgb(24 112 104 / 38%),
+      rgb(38 187 187 / 38%),
+      rgb(17 108 112 / 38%));
   border: 1px #197a6930 solid;
 }
 
 .OrangeGlassEffect {
-  background: -webkit-linear-gradient(
-    top left,
-    rgb(112 77 24 / 73%),
-    rgb(187 163 38 / 73%),
-    rgb(112 83 17 / 73%)
-  );
+  background: -webkit-linear-gradient(top left,
+      rgb(112 77 24 / 73%),
+      rgb(187 163 38 / 73%),
+      rgb(112 83 17 / 73%));
   border: 1px #9b610759 solid;
+}
+
+.MenuBackGround {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  backdrop-filter: blur(8px);
+  z-index: 19;
 }

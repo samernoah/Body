@@ -67,9 +67,15 @@ nav a.router-link-exact-active {
     rgb(17 108 112 / 39%)
   );
   border: 1px #197a6952 solid; */
-  padding: 6px 15px;
   border-radius: 0px;
 }
+
+@media screen and (min-width: 481px) {
+  nav a.router-link-exact-active {
+    padding: 6px 15px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   nav a {
     color: #ffffff;
@@ -78,8 +84,8 @@ nav a.router-link-exact-active {
   nav a.router-link-exact-active {
     color: #ffffff;
     border-radius: 0px;
-    padding: 6px 0px;
-    width: 100%;
+    padding: 6px 7.5%;
+    width: 84%;
   }
 }
 </style>

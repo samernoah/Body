@@ -154,9 +154,7 @@ export default {
     border: 1px #2c363430 solid;
     z-index: 100;
   }
-  .CoursesHeadertransition {
-    transition: all 0.2s ease-in;
-  }
+
   .CoursesHeaderNavActive {
     transform: translateY(-17px) translateX(-50%);
     opacity: 1;
@@ -188,9 +186,9 @@ export default {
       rgb(17 108 112 / 39%)
     );
     border: 1px #197a6952 solid;
-    border-radius: 0px;
+    /* border-radius: 0px;
     padding: 6px 0px;
-    width: 100%;
+    width: 100%; */
   }
 }
 </style>

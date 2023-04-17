@@ -14,7 +14,7 @@
   </header>
 </template>
 
-<script>
+<script >
 import HeaderMobileMenu from "./HeaderMobileMenu.vue";
 export default {
   components: { HeaderMobileMenu },
@@ -31,9 +31,10 @@ export default {
         "-webkit-linear-gradient(top left,rgb(112 77 24 / 50%),rgb(187 163 38 / 50%),rgb(112 83 17 / 50%))";
 
       this.$refs.HM.querySelector("a.router-link-exact-active").style.border =
-        "1px #9b610759 solid";
+        "1px #60482140 solid";
       this.$refs.Headerhr.style.border = "1px rgb(201 122 0 / 39%) solid";
-    } else {
+    } 
+    else {
       this.$refs.HM.querySelector(
         "a.router-link-exact-active"
       ).style.background =
@@ -78,6 +79,7 @@ export default {
 .HeaderNav {
   position: relative;
   z-index: 100;
+  transition: all 0.5s ease-in;
 }
 @media screen and (min-width: 581px) {
   .Header h2 {
@@ -123,26 +125,19 @@ export default {
 
   .HeaderNav {
     position: absolute;
-    transform: translateY(-270px) translateX(-50%);
+    transform: translateX(-110%);
     opacity: 0;
-    border-radius: 10px;
     top: 0;
-    left: 50%;
+    left: 0;
     width: 98%;
-    background: -webkit-linear-gradient(
-      top left,
-      rgb(3 34 31 / 98%),
-      rgb(1 12 12 / 98%),
-      rgb(1 17 18 / 98%)
-    );
-    border: 1px #2c363430 solid;
-    z-index: 100;
+    height: 100vh;
+    backdrop-filter: blur(12px);
   }
   .Headertransition {
-    transition: all 0.2s ease-in;
+    transition: all 0.5s ease-in-out;
   }
   .HeaderNavActive {
-    transform: translateY(-17px) translateX(-50%);
+    transform: translateX(0);
     opacity: 1;
     z-index: 100;
   }
@@ -152,14 +147,17 @@ export default {
   }
   .HeaderNav a {
     position: relative;
-    font-size: 1.5rem;
+    font-size: 1rem;
+    text-align: left;
     display: block;
     margin: 5px auto;
-    padding: 10px 0px;
-    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 84%;
     border-radius: 5px;
     z-index: 10;
   }
+
   .Header nav {
     padding: 0px;
   }

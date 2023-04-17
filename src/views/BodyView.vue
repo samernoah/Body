@@ -258,4 +258,16 @@ export default {
   height: 92%;
   z-index: 16;
 }
+
+.bodycomp::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #2a2a2a;
+}
+
+.bodycomp::-webkit-scrollbar-thumb {
+  background-color: rgb(32 131 145);
+  border: 1px #1e1c5c solid;
+  border-radius: 10px;
+}
 </style>

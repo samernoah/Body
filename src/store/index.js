@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import Questions from "./QuestionsBank.js"
+import Questions from "./QuestionsBank.ts"
 
 const store = createStore({
 

@@ -7,7 +7,7 @@
     </transition>
 
     <transition name="NQ">
-      <div class="NewQ CenteredFlex" @click="NewQ = !NewQ">+</div>
+      <div class="NewQ CenteredFlex">+</div>
     </transition>
 
     <Header />
@@ -46,12 +46,17 @@
             </div>
           </div>
 
-          <div class="ControlElement" @click="ToggleOrgans" appear>
+          <div
+            id="Organnames"
+            class="ControlElement"
+            @click="ToggleOrgans"
+            appear
+          >
             <div class="ControlLabel">
               Organ <span v-if="ControlOptions.ChosenOrgan">:</span>
             </div>
             <transition name="CLabel">
-              <div class="Choises" v-if="ControlOptions.ChosenOrgan">
+              <div class="Organs" v-if="ControlOptions.ChosenOrgan">
                 {{ ControlOptions.ChosenOrgan }}
               </div>
             </transition>
@@ -64,7 +69,7 @@
             </div>
 
             <transition-group
-              name="ChoisesAnimation"
+              name="OrgansAnimation"
               tag="div"
               class="OptionsChoises"
               v-if="OrganMenu"
@@ -73,7 +78,7 @@
               <div
                 v-for="Organ in Organs"
                 :key="Organ"
-                class="Choise"
+                class="Organ"
                 @click="ChooseOrgan(e)"
               >
                 {{ Organ }}
@@ -83,12 +88,17 @@
 
           <!-- Ease Of Use Controls -->
 
-          <div class="ControlElement" @click="ToggleEOUs" appear>
+          <div
+            id="Organnames"
+            class="ControlElement"
+            @click="ToggleEOUs"
+            appear
+          >
             <div class="ControlLabel">
               Ease Of Use <span v-if="ControlOptions.ChosenEOU">:</span>
             </div>
             <transition name="CLabel">
-              <div class="Choises" v-if="ControlOptions.ChosenEOU">
+              <div class="Organs" v-if="ControlOptions.ChosenEOU">
                 {{ ControlOptions.ChosenEOU }}
               </div>
             </transition>
@@ -97,7 +107,7 @@
               <span>></span>
             </div>
             <transition-group
-              name="ChoisesAnimation"
+              name="OrgansAnimation"
               tag="div"
               class="OptionsChoises"
               v-if="EOUMenu"
@@ -106,7 +116,7 @@
               <div
                 v-for="Type in TypesOfEase"
                 :key="Type"
-                class="Choise"
+                class="Organ"
                 @click="ChooseEOU(e)"
               >
                 {{ Type }}
@@ -200,12 +210,11 @@
                 method="post"
                 :ref="`f${Question.id}`"
                 :data-AA="Question.A.MostRight.discreption"
-                :data-A="JSON.stringify(Question.A)"
               >
                 <div>
                   <div><input class="textanswer" type="text" /></div>
                   <div class="Chosendiscription CenteredFlex">
-                    {{ RegulerQuestionRightAnswer }}
+                    {{ Question.A.MostRight.chosen }}
                   </div>
                 </div>
               </form>
@@ -269,7 +278,6 @@ export default {
 
   data() {
     return {
-      RegulerQuestionRightAnswer:"",
       Effort: false,
       EffortContinous: [
         "Try Again",
@@ -386,36 +394,19 @@ export default {
           Q.C = true;
           return;
         }
-
-        // Reguler Question Handler
-
       } else if (Qel.dataset.qtype === "r") {
-        let Answer = Fel.dataset.aa ;
-        let Choises = JSON.parse(Fel.dataset.a) ;
-        console.log(Choises);
-        if (Fel.childNodes[0].childNodes[1].classList.contains("ChosenforReguler")
-        &&  Fel.childNodes[0].childNodes[1].classList.contains("Chosen")) {
-              Fel.childNodes[0].childNodes[1].classList.remove("ChosenforReguler");
-              Fel.childNodes[0].childNodes[1].classList.remove("Chosen"); 
-        }
-        
-        
+        let Answer = Fel.dataset.aa;
+        Fel.childNodes[0].childNodes[1].classList.add("ChosenforReguler");
+        // setTimeout(() => {
+        Fel.childNodes[0].childNodes[1].classList.add("Chosen");
+        // }, 300);
 
         if (Answer == Fel.childNodes[0].childNodes[0].childNodes[0].value) {
-          this.RegulerQuestionRightAnswer = Choises.MostRight.chosen ;
-          Fel.childNodes[0].childNodes[1].classList.add("ChosenforReguler");
-        
-        Fel.childNodes[0].childNodes[1].classList.add("Chosen");
           this.EffortMassage = this.EffortPays[msgN];
           this.QueMassage();
           Q.CC = true;
-          Q.C = true ;
           return;
         } else {
-          this.RegulerQuestionRightAnswer = Choises.Others.chosen  ;
-          Fel.childNodes[0].childNodes[1].classList.add("ChosenforReguler");
-        
-        Fel.childNodes[0].childNodes[1].classList.add("Chosen");
           this.EffortMassage = this.EffortContinous[msgN];
           this.QueMassage();
           Q.C = true;
@@ -441,7 +432,6 @@ export default {
       } else if (Qel.dataset.qtype === "r") {
         Fel.childNodes[0].childNodes[1].classList.remove("ChosenforReguler");
         Fel.childNodes[0].childNodes[1].classList.remove("Chosen");
-        Fel.querySelector(".textanswer").value = "" ;
       }
       Q.CC = false;
       Q.C = false;
@@ -460,7 +450,6 @@ export default {
           }
         });
       } else if (Qel.dataset.qtype === "r") {
-         
         return;
       }
     },
@@ -537,9 +526,10 @@ export default {
 }
 .QBView .QBcontainer {
   position: relative;
+  width: 98%;
   margin: 0 auto -14px auto;
   overflow: auto;
-  /* transform: translateX(5px); */
+  transform: translateX(5px);
 }
 
 .QBView .QBcontainer::-webkit-scrollbar {
@@ -642,10 +632,10 @@ export default {
   );
   border: 1px #9b610759 solid;
   color: white;
+  border-radius: 3px;
   padding: 22px 2px 30px 2px;
   box-shadow: 0 0 0.5px 0.5px #ffffff24;
 }
-
 .BodyWordSpan {
   color: skyblue;
   animation: BodyWord 8s ease-in 1s infinite alternate;
@@ -698,17 +688,16 @@ export default {
   margin: 10px auto -10px auto;
   padding: 15px 4px 15px 4px;
   border-top: 1px rgb(112 77 24 / 32%) solid;
-  color: #000000c4;
+  color: #000000b8;
   background: -webkit-linear-gradient(
-    left,
+    top left,
     rgb(112 77 24 / 5%),
-    rgb(141 122 28 / 60%),
+    rgb(187 163 38 / 60%),
     rgb(112 83 17 / 5%)
   );
   display: block;
   font-size: 16px;
-  font-weight: 500;
-  font-family: system-ui;
+  font-weight: 600;
   transition: all 0.3s ease-in, font-size 0.3s ease-in, border-top 3s ease,
     transfrom 0;
 }
@@ -721,6 +710,7 @@ export default {
 .QBView .optionmark {
   position: absolute;
   border: 1px blue solid;
+  left: 0;
   top: 50%;
   transform: translateY(-75%);
 }
@@ -794,9 +784,6 @@ export default {
   }
 }
 @media screen and (min-width: 481px) {
-  .QBView .QBcontainer {
-    width: 98%;
-  }
   .QBView .QBButton {
     margin-top: 50px;
     width: 200px;
@@ -824,12 +811,7 @@ export default {
     max-width: 217px;
     flex-grow: 4;
   }
-
-  .QBView .optionmark {
-    left: -12.5px;
-  }
 }
-
 @media screen and (max-width: 700px) and (min-width: 481px) {
   .QBView h1 {
     width: 349;
@@ -851,16 +833,8 @@ export default {
     max-width: 100%;
     flex-grow: 4;
   }
-
-  .QBView .optionmark {
-    left: -3%;
-  }
 }
-
 @media screen and (max-width: 480px) {
-  .QBView .QBcontainer {
-    width: 97%;
-  }
   .QBView {
     height: 205%;
   }
@@ -902,10 +876,6 @@ export default {
 
   .QBView .ControlLabel {
     display: none;
-  }
-
-  .QBView .optionmark {
-    left: -12.5px;
   }
 }
 
@@ -1010,7 +980,7 @@ export default {
   font-size: 14px;
 }
 
-.QBView .Choises {
+.QBView .Organs {
   display: inline-block;
   position: relative;
   background: -webkit-linear-gradient(
@@ -1056,14 +1026,14 @@ export default {
 }
 
 .QBView .OptionsChoises {
-  position: relative;
+  position: absolute;
   width: 100%;
   backdrop-filter: blur(8px);
   z-index: 20;
   border-radius: 3px;
 }
 
-.QBView .Choise {
+.QBView .Organ {
   display: block;
   background: -webkit-linear-gradient(
     top left,
@@ -1125,8 +1095,8 @@ export default {
   box-shadow: 0 0 0.5px 1px #ffffff42;
 }
 
-.ChoisesAnimation-enter-from,
-.ChoisesAnimation-leave-to {
+.OrgansAnimation-enter-from,
+.OrgansAnimation-leave-to {
   opacity: 0;
   transform: translateY(-20%);
 }
@@ -1169,8 +1139,8 @@ export default {
   transform: translateX(-50%);
 }
 
-.ChoisesAnimation-enter-active,
-.ChoisesAnimation-leave-active,
+.OrgansAnimation-enter-active,
+.OrgansAnimation-leave-active,
 .check-enter-active,
 .check-leave-active,
 .showall-enter-active,
@@ -1180,7 +1150,7 @@ export default {
   transition: all 0.3s ease;
 }
 
-.ChoisesAnimation-move {
+.OrgansAnimation-move {
   transition: all 0.3s ease-in;
 }
 
